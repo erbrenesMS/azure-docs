@@ -67,9 +67,9 @@ $ echo $(kubectl get CSINode <NODE NAME> -o jsonpath="{.spec.drivers[1].allocata
  - [Set up Azure File CSI driver on AKS cluster](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/docs/install-driver-on-aks.md)
 
 ## Migrating custom in-tree storage classes to CSI
-If you have created custom storage classes based on the in-tree storage drivers, these will need to be migrated when you have upgraded your cluster to 1.21.x.
+If you have created custom storage classes based on the in-tree storage drivers, you will need to migrate them eventually.
 
-Whilst explicit migration to the CSI provider is not needed for your storage classes to still be valid, to be able to use CSI features (snapshotting etc.) you will need to carry out the migration.
+Whilst explicit migration to the CSI provider is not needed for your storage classes to still be valid after upgrading to 1.21.x, to be able to use CSI features (snapshotting etc.) you will need to carry out the migration. 
 
 Migration of these storage classes will involve deleting the existing storage classes, and re-provisioning them with the provisioner set to **disk.csi.azure.com** if using Azure Disks, and **files.csi.azure.com** if using Azure Files.  As an example for Azure disks:
 
